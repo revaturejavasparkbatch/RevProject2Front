@@ -4,7 +4,7 @@ node_js:
 
 branches:
   only:
-    - master
+    - Vijay_Sadanani
 
 before_script:
   - npm install -g @angular/cli
