@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h4 class="modal-title" style="color: black">New User? Create an Account</h4>
+    <button type="button" class="close" aria-label="Close"
+     (click)="activeModal.dismiss('Cross click')">
+    </button>
+  </div>
+  <form>
+    <div class="modal-boy">
+      <div class="container">
+          <label for="username">Username</label>
+          <input type="text" 
+            class="form-control"/>
+          <label for="password">Password</label>
+          <input type="password" class="form-control">
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" class="form-control">
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success">
+        Submit Form
+      </button>
+    </div>
+  </form>
