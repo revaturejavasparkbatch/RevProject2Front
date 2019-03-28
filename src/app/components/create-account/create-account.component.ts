@@ -8,6 +8,8 @@ import {FormGroup} from '@angular/forms';
 })
 export class CreateAccountComponent implements OnInit {
   
+  activeModal: boolean = false;
+  
   constructor() { }
 
   ngOnInit() {

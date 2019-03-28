@@ -10,6 +10,8 @@ export class LoginViewComponent implements OnInit {
   @Input() customClass = '';
   @Input() closeCallback = () => (false);
   
+  activeModal: boolean = false;
+  
   constructor() { }
 
   ngOnInit() {
