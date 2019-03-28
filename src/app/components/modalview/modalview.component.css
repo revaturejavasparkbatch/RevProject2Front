@@ -14,7 +14,7 @@
     width: 100%;
     height: 100%;
     z-index: 995;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.75);
   }
   
   .modal .modal_content {
@@ -28,7 +28,7 @@
     background: #fff;
     box-sizing: border-box;
     padding: 20px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.7);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
     border-radius: 4px;
     width: 520px; /* This just a default width */
   }

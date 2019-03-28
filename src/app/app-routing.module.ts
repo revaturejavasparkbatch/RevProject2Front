@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { LoginViewComponent } from './components/login-view/login-view.component';
+
+import {FortuneOfTheDayComponent} from './components/fortune-of-the-day/fortune-of-the-day.component'
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
-  {path: 'home', component: AppComponent},
-  {path: 'login', component: LoginViewComponent},
-  {path: 'create', component: LoginViewComponent},
-  {path: '**', pathMatch: 'full', redirectTo: ''}
-  
+ {path: 'profile', component: ProfileComponent},
+ {path: 'dashboard', component: DashboardComponent},
+ {path: '**', pathMatch: 'full', redirectTo: '', component:FortuneOfTheDayComponent}
+
+
 ]
 
 @NgModule({
