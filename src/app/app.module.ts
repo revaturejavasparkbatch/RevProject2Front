@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalviewComponent } from './components/modalview/modalview.component';
+import { FortuneOfTheDayComponent } from './components/fortune-of-the-day/fortune-of-the-day.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { ModalviewComponent } from './components/modalview/modalview.component';
     LoginViewComponent,
     HomeComponent,
     CreateAccountComponent,
-    ModalviewComponent
+    ModalviewComponent,
+    FortuneOfTheDayComponent,
+    DashboardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
