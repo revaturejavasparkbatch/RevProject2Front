@@ -5,16 +5,15 @@
 </div>
 <form>
   <div class="modal-boy">
-    <div class="container">
-        <label for="username">Username</label>
-        <input type="text" 
-          class="form-control"/>
-        <label for="password">Password</label>
-        <input type="password" class="form-control">
+    <div class="container" style="color:black !important">
+        <label for="elemail">Email</label>
+        <input type="text" class="form-control" name="elemail" #elemail required/>
+        <label for="elpassword">Password</label>
+        <input type="password" class="form-control" name="elpassword" #elpassword required/>
       </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-success">
+    <button class="btn btn-success" (click) ="addLoginInfo(elemail.value, elpassword.value);">
       Login
     </button>
   </div>
