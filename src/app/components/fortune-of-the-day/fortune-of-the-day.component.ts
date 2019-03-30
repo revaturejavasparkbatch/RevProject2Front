@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FotDServiceService } from '../../services/fot-dservice.service';
-import { Observable } from 'rxjs';
 import { Fortune } from 'src/app/Fortune';
 
 @Component({
@@ -22,6 +21,18 @@ export class FortuneOfTheDayComponent implements OnInit {
         console.log(this.fortune);
         });
     }
+
+  showModal = false;
+  showLogin = false;
+
+  toggleModal = () => {
+    this.showModal = !this.showModal;
+  }
+  
+  toggleLogin = () => {
+    this.showLogin = !this.showLogin;
+  }
+
   }
 
 

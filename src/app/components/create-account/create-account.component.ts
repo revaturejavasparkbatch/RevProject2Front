@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup} from '@angular/forms';
 import { PostUserService } from '../../services/post-user.service';
 import {User} from '../../User';
-import { fn } from '@angular/compiler/src/output/output_ast';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create-account',
