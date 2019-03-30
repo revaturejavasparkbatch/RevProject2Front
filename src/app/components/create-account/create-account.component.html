@@ -1,3 +1,4 @@
+
 <div class="modal-header">
     <h4 class="modal-title" style="color: black">New User? Create an Account</h4>
     <button type="button" class="close" aria-label="Close">
@@ -5,19 +6,22 @@
   </div>
   <form>
     <div class="modal-boy">
-      <div class="container">
-          <label for="username">Username</label>
-          <input type="text" 
-            class="form-control"/>
+      <div class="container" style="color:black !important">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" name="first" #first required/>
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" name="last" #last required/>
+          <label for="email">Email</label>
+          <input type="text" class="form-control" name="email" #email required/>
           <label for="password">Password</label>
-          <input type="password" class="form-control">
+          <input type="password" class="form-control" name="pass" #pass required/>
 
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" class="form-control">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" class="form-control">
         </div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-success">
+      <button class="btn btn-success" (click)="add(first.value, last.value, email.value, pass.value);">
         Submit Form
       </button>
     </div>

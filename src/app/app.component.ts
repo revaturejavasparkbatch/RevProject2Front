@@ -7,14 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ProjectFortune';
-  showModal = false;
-  showLogin = false;
-
-  toggleModal = () => {
-    this.showModal = !this.showModal;
-  }
-  
-  toggleLogin = () => {
-    this.showLogin = !this.showLogin;
-  }
 }
