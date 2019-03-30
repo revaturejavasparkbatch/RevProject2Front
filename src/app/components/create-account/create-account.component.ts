@@ -3,6 +3,7 @@ import {FormGroup} from '@angular/forms';
 import { PostUserService } from '../../services/post-user.service';
 import {User} from '../../User';
 import { fn } from '@angular/compiler/src/output/output_ast';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create-account',
@@ -23,14 +24,17 @@ export class CreateAccountComponent implements OnInit {
 
   add(fN: string, lN: string, em: string, pass: string): void {
     let user = {
-      first: fN,
-      last: lN,
+      fName: fN,
+      lName: lN,
       email: em,
-      pass: pass
+      password: pass
     }
     
     console.log(user);
 
-    this.postUserService.addUser(user);
+    this.postUserService.addUser(user).subscribe((response) => {
+      console.log('response from post is ', response);
+    });
+
   } 
 }

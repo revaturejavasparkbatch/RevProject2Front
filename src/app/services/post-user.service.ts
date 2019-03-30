@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../User';
 
@@ -11,8 +11,15 @@ export class PostUserService {
 
   constructor(private http: HttpClient) { }
 
-  addUser (user: User): Observable<User> {
-    return this.http.post<User>(this.postUrl, user);
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  }
+
+  addUser (user: User) {
+    console.log("we are in addUser");
+    return this.http.post<User>(this.postUrl, user, this.httpOptions);
   }
 
 }

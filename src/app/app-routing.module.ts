@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { Router } from '@angular/router';
 
 import {FortuneOfTheDayComponent} from './components/fortune-of-the-day/fortune-of-the-day.component'
 import { DashboardComponent } from './components/dashboard/dashboard.component';
