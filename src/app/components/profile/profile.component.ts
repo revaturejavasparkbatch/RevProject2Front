@@ -15,7 +15,6 @@ export class ProfileComponent implements OnInit {
 
   fortunes: String[] = ["hi", "bye"];
 
-
   goDash() {
     this.route.navigateByUrl("/dashboard");
   }
