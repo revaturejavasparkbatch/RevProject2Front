@@ -14,6 +14,7 @@ import { FortuneOfTheDayComponent } from './components/fortune-of-the-day/fortun
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserCarryService } from './services/user-carry.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserCarryService],
   bootstrap: [AppComponent],
   entryComponents: [LoginViewComponent]
 })

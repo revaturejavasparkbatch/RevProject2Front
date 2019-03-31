@@ -16,7 +16,7 @@ export class FortuneOfTheDayComponent implements OnInit {
 
   ngOnInit() {
       this.FotDServiceService.getFotd().subscribe((randomFortune) => {
-        this.fortune = randomFortune
+        this.fortune = randomFortune;
         this.todaysFortune = this.fortune[0].message;
         console.log(this.fortune);
         });

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserCarryService } from 'src/app/services/user-carry.service';
+import { loggedInUser } from 'src/app/loggedInUser';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userCarryService: UserCarryService) {}
+  loggedInUser: loggedInUser;
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.userCarryService.getcurrentUser().subscribe((ourUser) => {
+      this.loggedInUser = ourUser;
+      console.log(this.loggedInUser);
+    });
   }
 
 }
