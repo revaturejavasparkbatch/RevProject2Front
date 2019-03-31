@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { userLogin } from '../userLogin';
+import { loggedInUser } from '../loggedInUser';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +18,9 @@ export class LoginService {
     })
   }
 
-  loginUser (userLogin: userLogin) {
+  loginUser (userLogin: userLogin): Observable<loggedInUser> {
     console.log("we are in loginUser");
-    return this.http.post<userLogin>(this.loginUrl, userLogin, this.httpOptions);
+    return this.http.post<loggedInUser>(this.loginUrl, userLogin, this.httpOptions);
     
   }
 }

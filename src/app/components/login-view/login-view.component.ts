@@ -3,6 +3,8 @@ import { userLogin } from '../../userLogin';
 import { LoginService} from '../../services/login.service';
 import { User } from 'src/app/User';
 import { Router } from '@angular/router';
+import { loggedInUser } from 'src/app/loggedInUser';
+import { UserCarryService } from 'src/app/services/user-carry.service';
 
 @Component({
   selector: 'app-login-view',
@@ -16,14 +18,13 @@ export class LoginViewComponent implements OnInit {
   
   activeModal: boolean = false;
   
-  constructor(private loginServ: LoginService, private route: Router) { }
+  constructor(private loginServ: LoginService, private route: Router, private userCarryService: UserCarryService) { }
 
   ngOnInit() {
   }
 
   userLogin: {email: string; password: string};
-
-  redirectUrl: string = "http://localhost:4200/dashboard";
+  loggedInUser: loggedInUser;
 
   addLoginInfo(em: string, pass: string): void {
     let userLogin = {
@@ -31,10 +32,8 @@ export class LoginViewComponent implements OnInit {
       password: pass
     }
 
-  console.log(userLogin);
-
   this.loginServ.loginUser(userLogin).subscribe((response) => {
-      console.log('response from post is ', response);
+      this.loggedInUser = response;
       if (response.email != null) {
           this.route.navigateByUrl("/dashboard");
         }

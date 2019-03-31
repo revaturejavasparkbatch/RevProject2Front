@@ -1,19 +1,15 @@
 language: node_js
 node_js:
   - "8.9"
-
 branches:
   only:
     - master
     - dev
     - Peyton_Shriver
     - Vijay_Sadanani
-
 before_script:
   - npm install -g @angular/cli
-
 script:
   - ng build --prod
   - npm install sonar-scanner
   - sonar-scanner -Dsonar.projectKey=revaturejavasparkbatch_RevProject2Front -Dsonar.organization=revaturejavasparkbatch -Dsonar.sources=src -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$TOKEN
-

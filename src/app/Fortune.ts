@@ -1,4 +1,4 @@
 export class Fortune {
-    id: number;
+    id: string;
     message: string;
 }
