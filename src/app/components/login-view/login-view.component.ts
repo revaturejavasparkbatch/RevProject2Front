@@ -26,6 +26,8 @@ export class LoginViewComponent implements OnInit {
   userLogin: {email: string; password: string};
   loggedInUser: loggedInUser;
 
+  myStorage = window.localStorage;
+
   addLoginInfo(em: string, pass: string): void {
     let userLogin = {
       email: em,

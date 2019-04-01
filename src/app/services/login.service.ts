@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  loginUrl: string = "http://localhost:8080/ProjectFortuneX/login";
+  loginUrl: string = "http://34.207.123.39:8085/ProjectFortuneX/login";
 
   constructor(private http: HttpClient) { }
 
