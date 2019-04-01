@@ -15,4 +15,8 @@ export class GetUserFortunesService {
   getFortunes(id: number): Observable<Fortune[]> {
     return this.http.get<Fortune[]>(this.userFortunesUrl+id);
   }
+
+  getUserFortunes(fortuneUrl: string): Observable<Fortune> {
+    return this.http.get<Fortune>(fortuneUrl);
+  }
 }

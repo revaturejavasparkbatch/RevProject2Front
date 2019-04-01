@@ -15,12 +15,14 @@ export class DashboardComponent implements OnInit {
   constructor(private userCarryService: UserCarryService, private RandFortuneService: RandFortuneService) {}
   loggedInUser: loggedInUser;
     private randFortune ="";
+
   ngOnInit(): void {
     this.userCarryService.getcurrentUser().subscribe((ourUser) => {
       this.loggedInUser = ourUser;
       console.log(this.loggedInUser);
     });
   }
+  
   generateFortune(){
     this.RandFortuneService.getRandFortune().subscribe((randomFortune) =>{
       this.randFortune = randomFortune[0].message;

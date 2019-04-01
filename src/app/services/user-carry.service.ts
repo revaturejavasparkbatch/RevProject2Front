@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class UserCarryService {
   constructor(private http: HttpClient) { }
   
-  currentUserUrl: string = "http://192.168.0.20:8080/ProjectFortuneX/session";
+  currentUserUrl: string = "http://localhost:8080/ProjectFortuneX/session";
 
   getcurrentUser(): Observable<loggedInUser> {
     return this.http.get<loggedInUser>(this.currentUserUrl);
