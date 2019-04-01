@@ -17,17 +17,24 @@ export class ProfileComponent implements OnInit {
   fortune: Fortune[] = [];
   fortuneId: string[] = [];
   loggedInUser: loggedInUser;
-  
-  ngOnInit(): void {
-    // this.loggedInUser = this.userCarryService.loggedInUser;
-    // console.log(loggedInUser);
+  fortuneNum: number;
 
-    // this.getUserFortuneService.getFortunes(this.loggedInUser.id).subscribe((userFortunes) => {
-    //   for(let fort of userFortunes){
-    //     console.log(fort.id);
-    //     this.fortuneId.push(fort.id);
-    //   }
-    // });
+  private fortuneUrl = "http://fortunecookieapi.herokuapp.com/v1/fortunes/";
+
+  ngOnInit(): void {
+    this.userCarryService.getcurrentUser().subscribe((ourUser) => {
+      this.loggedInUser = ourUser;
+      console.log(this.loggedInUser);
+
+    this.getUserFortuneService.getFortunes(this.loggedInUser.id).subscribe((userFortunes) => {
+        for(let fort of userFortunes){
+          this.getUserFortuneService.getUserFortunes(this.fortuneUrl+fort.id).subscribe((ourFortunes) => {
+            this.fortuneId.push(ourFortunes.message);
+          });
+        }
+      });
+  });
+
   }
 
   goDash() {
