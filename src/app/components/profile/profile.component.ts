@@ -4,6 +4,7 @@ import { GetUserFortunesService } from '../../services/get-user-fortunes.service
 import { Fortune } from 'src/app/Fortune';
 import { loggedInUser } from '../../loggedInUser';
 import { UserCarryService } from 'src/app/services/user-carry.service';
+import { MatDividerModule } from '@angular/material/divider';
  
 @Component({
   selector: 'app-profile',
@@ -15,9 +16,9 @@ export class ProfileComponent implements OnInit {
   constructor(private route: Router, private getUserFortuneService: GetUserFortunesService, private userCarryService: UserCarryService) { }
 
   fortune: Fortune[] = [];
-  fortuneId: string[] = [];
+  fortuneMess: string[] = [];
   loggedInUser: loggedInUser;
-  fortuneNum: number;
+  fortuneNum: string[] = [];
 
   private fortuneUrl = "http://fortunecookieapi.herokuapp.com/v1/fortunes/";
 
@@ -28,13 +29,18 @@ export class ProfileComponent implements OnInit {
 
     this.getUserFortuneService.getFortunes(this.loggedInUser.id).subscribe((userFortunes) => {
         for(let fort of userFortunes){
+          this.fortuneNum.push(fort.id);
           this.getUserFortuneService.getUserFortunes(this.fortuneUrl+fort.id).subscribe((ourFortunes) => {
-            this.fortuneId.push(ourFortunes.message);
+            this.fortuneMess.push(ourFortunes.message);
           });
         }
       });
   });
 
+  }
+
+  deleteFortune(fortuneId: string){
+    console.log(fortuneId);
   }
 
   goDash() {
