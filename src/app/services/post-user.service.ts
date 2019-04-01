@@ -7,7 +7,7 @@ import {User} from '../User';
   providedIn: 'root'
 })
 export class PostUserService {
-  postUrl: string = "http://localhost:8080/ProjectFortuneX/apiusers";
+  postUrl: string = "http://34.207.123.39:8085/ProjectFortuneX/apiusers";
 
   constructor(private http: HttpClient) { }
 
