@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   loggedInUser: loggedInUser;
 
   private randFortune ="";
-  private randFortuneId = null;
+  private randFortuneId = "" ;
   private fortuneNums = null;
   ngOnInit(): void {
     this.userCarryService.getcurrentUser().subscribe((ourUser) => {

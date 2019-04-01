@@ -18,9 +18,13 @@ export class RandFortuneService {
 
   getNumRand(fortuneNums): Number{
     let numarr = [];
+    let fortuneNumsToDecimal = [];
+    for(let str in fortuneNums){
+      fortuneNumsToDecimal.push((parseInt((str.substring(21)),16))-2868);
+    }
     console.log(fortuneNums);
-    for(let i=0; i<547; ++i){
-      if(!fortuneNums.includes(i)){
+    for(let i=0; i<541; ++i){
+      if(!fortuneNumsToDecimal.includes(i)){
       numarr.push(i);
       }
     }
