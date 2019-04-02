@@ -1,3 +1,18 @@
 .icon-trash-simple:hover {
     color: red !important;
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
+}
+
+li {
+
+    list-style-type: none;
+      
+}
+
+#projectTitle {
+    size: 30pt;
 }

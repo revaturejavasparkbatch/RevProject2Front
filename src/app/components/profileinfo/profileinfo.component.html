@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h4 class="modal-title" style="color: black">Profile Information</h4>
+    <button type="button" class="close" aria-label="Close">
+    </button>
+  </div>
+  <form>
+    <div class="modal-boy">
+      <div class="container" style="color:black !important">
+          <label for="userfname">First Name</label>
+          <input type="text" class="form-control" name="userfname" #userfname placeholder={{firstName}} required/>
+          <label for="userfname">Last Name</label>
+          <input type="text" class="form-control" name="userlname" #userlname placeholder={{lastName}} required/>
+          <label for="useremail">Email</label>
+          <input type="email" class="form-control" name="useremail" #useremail placeholder={{userEmail}} required/>
+          <label for="userpass">Password</label>
+          <input type="password" class="form-control" name="userpass" #userpass placeholder="No new password? Enter your old one." required/>
+          <label for="userpass2">Confirm Password</label>
+          <input type="password" class="form-control" name="userpass2" #userpass placeholder="Confirm password." required/>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-warning">
+        Update Profile
+      </button>
+    </div>
+  </form>
