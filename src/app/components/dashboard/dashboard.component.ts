@@ -17,16 +17,18 @@ export class DashboardComponent implements OnInit {
      private getUserFortuneService: GetUserFortunesService, private favFortuneService: FavFortuneService ) {}
   loggedInUser: loggedInUser;
   private luckNum = null;
-  private randFortune ="";
+  randFortune = "";
   private randFortuneId = "" ;
   private fortuneNums = null;
-  private showFavButton = false;
+  showFavButton = false;
+
   ngOnInit(): void {
     this.userCarryService.getcurrentUser().subscribe((ourUser) => {
       this.loggedInUser = ourUser;
       console.log(this.loggedInUser);
     });
-    this.getUserFortuneService.getFortunes(this.loggedInUser.id).subscribe((userFortunes) => {
+    
+    this.getUserFortuneService.getFortunes(parseInt(window.localStorage.getItem("id"))).subscribe((userFortunes) => {
       this.fortuneNums = userFortunes;
     });
   }

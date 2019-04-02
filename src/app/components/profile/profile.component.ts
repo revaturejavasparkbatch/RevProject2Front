@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
 
   fortune: Fortune[] = [];
   fortuneMess: String[] = [];
-  loggedInUser: loggedInUser;
+  loggedInUserProf: loggedInUser;
   fortuneNum: String[] = [];
   userFirstName: String = "";
   deleteThisFortune: completeFortune =  {
@@ -36,17 +36,18 @@ export class ProfileComponent implements OnInit {
     };
 
   userIdNum: number;
+  storageUser: loggedInUser;
 
   private fortuneUrl = "http://fortunecookieapi.herokuapp.com/v1/fortunes/";
 
   ngOnInit(): void {
-    var storageUser: string = window.localStorage.getItem("saved");
-    console.log("this is da storageUser from localStorage " + (storageUser));
-    this.userCarryService.getcurrentUser().subscribe((ourUser) => {
-      this.loggedInUser = ourUser;
-      console.log(this.loggedInUser);
+    console.log(parseInt(window.localStorage.getItem("id")));
 
-    this.getUserFortuneService.getFortunes(this.loggedInUser.id).subscribe((userObjects) => {
+    this.userCarryService.getcurrentUser().subscribe((ourUser) => {
+      this.loggedInUserProf = ourUser;
+      console.log(this.loggedInUserProf);
+
+    this.getUserFortuneService.getFortunes(parseInt(window.localStorage.getItem("id"))).subscribe((userObjects) => {
       console.log(userObjects);
       this.userFirstName = userObjects[0].user.fName;
         for(let fort of userObjects){
@@ -62,7 +63,7 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteFortune(fortuneId: String){
-    this.deleteThisFortune.user.id = this.loggedInUser.id;
+    this.deleteThisFortune.user.id = this.loggedInUserProf.id;
     console.log(fortuneId);
     this.deleteThisFortune.id = fortuneId;
 
