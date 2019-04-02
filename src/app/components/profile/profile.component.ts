@@ -40,11 +40,14 @@ export class ProfileComponent implements OnInit {
   private fortuneUrl = "http://fortunecookieapi.herokuapp.com/v1/fortunes/";
 
   ngOnInit(): void {
+    var storageUser: string = window.localStorage.getItem("saved");
+    console.log("this is da storageUser from localStorage " + (storageUser));
     this.userCarryService.getcurrentUser().subscribe((ourUser) => {
       this.loggedInUser = ourUser;
       console.log(this.loggedInUser);
 
     this.getUserFortuneService.getFortunes(this.loggedInUser.id).subscribe((userObjects) => {
+      console.log(userObjects);
       this.userFirstName = userObjects[0].user.fName;
         for(let fort of userObjects){
           this.fortuneNum.push(fort.id);
