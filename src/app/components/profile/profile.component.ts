@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   constructor(private route: Router, private getUserFortuneService: GetUserFortunesService, private userCarryService: UserCarryService, private deleteFortuneService: DeleteFortuneService) { }
 
   fortune: Fortune[] = [];
-  fortuneMess: string[] = [];
+  fortuneMess: String[] = [];
   loggedInUser: loggedInUser;
   fortuneNum: String[] = [];
   userFirstName: String = "";

@@ -65,7 +65,9 @@
         <br/>
         <span class="text-white"><h4>{{randFortune}}</h4></span>
       </h1>
-      
+      <div *ngIf="showFavButton">
+        <button class="btn btn-neutral" (click)="favFortune()">Favorite</button>
+      </div>
       <div class="btn-wrapper mb-3">
         <a href="#blk" class="btn btn-success btn-link btn-sm"></a>
       </div>

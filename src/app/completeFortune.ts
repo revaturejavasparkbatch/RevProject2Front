@@ -2,7 +2,7 @@ export class completeFortune {
     id: String;
         user: {
             id: number;
-            email: string;
+            email: String;
             fName: String;
             lName: String;
             password: String;
