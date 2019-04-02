@@ -1,11 +1,11 @@
 export class completeFortune {
-    "id": "";
-        "user": {
-        "id": 0;
-        "email": "";
-        "fName": "";
-        "lName": "";
-        "password": ""
+    id: String;
+        user: {
+            id: number;
+            email: string;
+            fName: String;
+            lName: String;
+            password: String;
         };
-    "luckyNum": 0;
+    luckyNum: number;
 }

@@ -5,6 +5,9 @@ import { Fortune } from 'src/app/Fortune';
 import { loggedInUser } from '../../loggedInUser';
 import { UserCarryService } from 'src/app/services/user-carry.service';
 import { MatDividerModule } from '@angular/material/divider';
+import { completeFortune } from 'src/app/completeFortune';
+import { DeleteFortuneService } from 'src/app/services/delete-fortune.service';
+import { getMatFormFieldPlaceholderConflictError } from '@angular/material';
  
 @Component({
   selector: 'app-profile',
@@ -13,14 +16,26 @@ import { MatDividerModule } from '@angular/material/divider';
 })
 
 export class ProfileComponent implements OnInit {
-  constructor(private route: Router, private getUserFortuneService: GetUserFortunesService, private userCarryService: UserCarryService) { }
+  constructor(private route: Router, private getUserFortuneService: GetUserFortunesService, private userCarryService: UserCarryService, private deleteFortuneService: DeleteFortuneService) { }
 
   fortune: Fortune[] = [];
   fortuneMess: string[] = [];
   loggedInUser: loggedInUser;
-  fortuneNum: string[] = [];
-  userFirstName: string = "";
+  fortuneNum: String[] = [];
+  userFirstName: String = "";
+  deleteThisFortune: completeFortune =  {
+      id: "",
+        user: {
+        id: 0,
+        email: "",
+        fName: "",
+        lName: "",
+        password: "",
+      },
+    luckyNum: 0
+    };
 
+  userIdNum: number;
 
   private fortuneUrl = "http://fortunecookieapi.herokuapp.com/v1/fortunes/";
 
@@ -34,7 +49,8 @@ export class ProfileComponent implements OnInit {
         for(let fort of userObjects){
           this.fortuneNum.push(fort.id);
           this.getUserFortuneService.getUserFortunes(this.fortuneUrl+fort.id).subscribe((ourFortunes) => {
-            this.fortuneMess.push(ourFortunes.message);
+            this.fortune.push(ourFortunes);
+            console.log(this.fortune);
           });
         }
       });
@@ -42,8 +58,15 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  deleteFortune(fortuneId: string){
+  deleteFortune(fortuneId: String){
+    this.deleteThisFortune.user.id = this.loggedInUser.id;
     console.log(fortuneId);
+    this.deleteThisFortune.id = fortuneId;
+
+    this.deleteFortuneService.deleteFortune(this.deleteThisFortune).subscribe((deletedFort) => {
+      console.log(deletedFort + "was deleted!!! POG");
+      this.route.navigateByUrl("/profile");
+    })
   }
 
   goDash() {
