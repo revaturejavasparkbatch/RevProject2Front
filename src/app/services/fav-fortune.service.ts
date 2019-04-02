@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { completeFortune } from 'src/app/completeFortune'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,11 @@ export class FavFortuneService {
       'Content-Type':  'application/json',
     })
   }
-  postUrl: string = "http://localhost:8080/ProjectFortuneX/apifortunes";
+  postUrl: string = "http://34.207.123.39:8085/ProjectFortuneX/apifortunes";
   constructor(private http: HttpClient) { }
 
-  addUser (fortune: Fortune) {
+   favAFortune(fortune: completeFortune) {
     console.log("we are in addUser");
-    return this.http.post<Fortune>(this.postUrl, fortune, this.httpOptions);
+    return this.http.post<completeFortune>(this.postUrl, fortune, this.httpOptions);
   }
 }

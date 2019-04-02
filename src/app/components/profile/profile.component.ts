@@ -16,10 +16,10 @@ export class ProfileComponent implements OnInit {
   constructor(private route: Router, private getUserFortuneService: GetUserFortunesService, private userCarryService: UserCarryService) { }
 
   fortune: Fortune[] = [];
-  fortuneMess: string[] = [];
+  fortuneMess: String[] = [];
   loggedInUser: loggedInUser;
-  fortuneNum: string[] = [];
-  userFirstName: string = "";
+  fortuneNum: String[] = [];
+  userFirstName: String = "";
 
 
   private fortuneUrl = "http://fortunecookieapi.herokuapp.com/v1/fortunes/";
