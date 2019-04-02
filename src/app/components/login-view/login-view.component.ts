@@ -35,7 +35,8 @@ export class LoginViewComponent implements OnInit {
     }
 
   this.loginServ.loginUser(userLogin).subscribe((response) => {
-      this.loggedInUser = response;
+      var loggedInUser: loggedInUser = response;
+      window.localStorage.setItem("saved", JSON.stringify(loggedInUser));
       if (response.email != null) {
           this.route.navigateByUrl("/dashboard");
         }
