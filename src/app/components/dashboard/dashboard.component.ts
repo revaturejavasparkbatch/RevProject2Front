@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import{RandFortuneService} from '../../services/rand-fortune.service'
-import { Fortune } from 'src/app/Fortune';
+import { completeFortune } from 'src/app/completeFortune';
 import { UserCarryService } from 'src/app/services/user-carry.service';
 import { loggedInUser } from 'src/app/loggedInUser';
 import { GetUserFortunesService } from '../../services/get-user-fortunes.service';
+import {FavFortuneService} from 'src/app/services/fav-fortune.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,12 +13,14 @@ import { GetUserFortunesService } from '../../services/get-user-fortunes.service
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private userCarryService: UserCarryService, private RandFortuneService: RandFortuneService, private getUserFortuneService: GetUserFortunesService) {}
+  constructor(private userCarryService: UserCarryService, private RandFortuneService: RandFortuneService,
+     private getUserFortuneService: GetUserFortunesService, private favFortuneService: FavFortuneService ) {}
   loggedInUser: loggedInUser;
-
+  private luckNum = null;
   private randFortune ="";
   private randFortuneId = "" ;
   private fortuneNums = null;
+  private showFavButton = false;
   ngOnInit(): void {
     this.userCarryService.getcurrentUser().subscribe((ourUser) => {
       this.loggedInUser = ourUser;
@@ -34,6 +37,18 @@ export class DashboardComponent implements OnInit {
       this.randFortuneId = randomFortune[0].id;
 
     });
+    this.showFavButton = true;
+    this.luckNum = Math.floor((1 + (Math.random()*998)));
+  }
+  favFortune(){
+    let fortune:completeFortune = {id:this.randFortuneId, user:this.loggedInUser, luckyNum:this.luckNum};
+    this.favFortuneService.favAFortune(fortune).subscribe((putResponse) =>{
+      console.log(putResponse);
+    });
+    this.randFortune="";
+    this.randFortuneId ="";
+    this.showFavButton = false;
+    this.luckNum= null;
   }
 
 }

@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Fortune } from '../Fortune';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { UserCarryService } from 'src/app/services/user-carry.service';
-import { loggedInUser } from 'src/app/loggedInUser';
+
 
 @Injectable({
   providedIn: 'root'
