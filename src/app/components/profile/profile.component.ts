@@ -45,9 +45,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     console.log(parseInt(window.localStorage.getItem("id")));
 
-    this.userCarryService.getcurrentUser().subscribe((ourUser) => {
-      this.loggedInUserProf = ourUser;
-      console.log(this.loggedInUserProf);
+    
+    this.loggedInUserProf = this.userCarryService.getcurrentUser();
+    console.log(this.loggedInUserProf);
 
     this.getUserFortuneService.getFortunes(parseInt(window.localStorage.getItem("id"))).subscribe((userObjects) => {
       console.log(userObjects);
@@ -59,7 +59,6 @@ export class ProfileComponent implements OnInit {
           });
         }
       });
-  });
 
   }
 

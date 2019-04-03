@@ -10,10 +10,16 @@ import { Observable } from 'rxjs';
 export class UserCarryService {
   constructor(private http: HttpClient) { }
   
-  currentUserUrl: string = "http://34.207.123.39:8085/ProjectFortuneX/session";
+  private user:loggedInUser ={
+    id: JSON.parse(window.localStorage.getItem("id")),
+    email: JSON.parse(window.localStorage.getItem("email")),
+    fName: JSON.parse(window.localStorage.getItem("fName")),
+    lName: JSON.parse(window.localStorage.getItem("lName")),
+    password: JSON.parse(window.localStorage.getItem("password"))
+  };
 
-  getcurrentUser(): Observable<loggedInUser> {
-    return this.http.get<loggedInUser>(this.currentUserUrl);
+  getcurrentUser(): loggedInUser {
+    return this.user;
   }
 
 }
