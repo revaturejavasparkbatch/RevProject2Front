@@ -29,8 +29,10 @@ export class ProfileinfoComponent implements OnInit {
     password: ""
   };
 
+  profMessage: string = "";
+
   // All the logic for checking empty strings in profile edit & populating editedUser object with create values if so.
-  editUser(fname: string, lname: string, email: string, pass: string){
+  editUser(fname: string, lname: string, email: string, pass: string, pass2: string){
     this.editedUser.id = this.userId;
     console.log(this.userPass + " this should be our password");
 
@@ -55,8 +57,12 @@ export class ProfileinfoComponent implements OnInit {
     if (pass == "" || pass == null){
       this.editedUser.password = this.userPass; 
     } else {
-      //add password validation here!!!!
-      this.editedUser.password = pass;
+      if(!(pass === pass2)){
+        this.profMessage = "The passwords you input did not match. Please try again.";
+      } else {
+        this.editedUser.password = pass;
+        this.profMessage = "Passwords matched. Updating profile now...";
+      }
     }
 
     console.log(this.editedUser);
