@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h4 class="modal-title" style="color: black">Please enter your password to confirm deletion of your account.</h4>
+    <button type="button" class="close" aria-label="Close">
+    </button>
+  </div>
+  <form>
+    <div class="modal-boy">
+      <div class="container" style="color:black !important">
+          <label for="deletePW">Password</label>
+          <input type="password" class="form-control" name="deletePW" #deletePW required/>
+          <label for="deletePW">Confirm Password</label>
+          <input type="password" class="form-control" name="deletePW" #deletePW2 required/>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" (click)="deleteUser(deletePW.value, deletePW2.value)">
+        Delete
+      </button>
+    </div>
+    <p style="color: red">{{errorMessage}}</p>
+  </form>

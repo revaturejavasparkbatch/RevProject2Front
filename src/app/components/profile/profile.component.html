@@ -17,13 +17,25 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="https://demos.creative-tim.com/blk-design-system/index.html" rel="tooltip" title="Designed and Coded by Vijay, Peyton, and Andrew" data-placement="bottom" target="_blank">
-          <span>• Project FortuneX •</span>
-        </a>
+        <li class="nav-item dropdown">
+          <a class="navbar-brand nav-link" title="Designed and Coded by Vijay, Peyton, and Andrew" id="navbarDropdownMenuLink" data-toggle="dropdown">
+            <span id="projectTitle">• Project FortuneX •</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" (click)="toggleProfile()" style="color: black"><i class="tim-icons icon-single-02"></i> {{userFirstName}}'s Profile</a>
+            <a class="dropdown-item" (click)="toggleDelete()" style="color: black"><i class="tim-icons icon-button-power"></i>Delete My Account</a>
+          </div>
+        </li>
+        <app-modalview [show]="showProfile"  [customClass]="'custom_modal_class'" [closeCallback]="toggleProfile">
+            <app-profileinfo></app-profileinfo>
+        </app-modalview>
+        <app-modalview [show]="showDeleteMenu"  [customClass]="'custom_modal_class'" [closeCallback]="toggleDelete">
+            <app-deletemodal></app-deletemodal>
+        </app-modalview>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-bar bar1"></span>
-          <span class="navbar-toggler-bar bar2"></span>
-          <span class="navbar-toggler-bar bar3"></span>
+          <span class="navbar-toggler-bar bar1">Test</span>
+          <span class="navbar-toggler-bar bar2">Test1</span>
+          <span class="navbar-toggler-bar bar3">Test2</span>
         </button>
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
@@ -42,9 +54,6 @@
           </div>
         </div>
         <ul class="navbar-nav">
-          <li class="nav-item">
-              <button type="button" class="btn">{{userFirstName}}'s Information</button>
-          </li>
           <li class="nav-item">
             <button type="button" class="btn" (click)="goDash()">Dashboard Home</button>
           </li>
@@ -68,3 +77,13 @@
       </div>
 </div>
 
+
+<!-- <li class="nav-item dropdown">
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <button type="button" class="btn dropbtn" (click)="toggleProfile()">{{userFirstName}}'s Information</button> 
+      <a class="dropdown-item" (click)="toggleProfile()" style="color: black">{{userFirstName}}'s Profile</a>
+    </div>
+</li>
+<app-modalview [show]="showProfile"  [customClass]="'custom_modal_class'" [closeCallback]="toggleProfile">
+    <app-profileinfo></app-profileinfo>
+</app-modalview> -->

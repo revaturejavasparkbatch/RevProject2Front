@@ -64,6 +64,16 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  showProfile = false;
+  toggleProfile = () => {
+    this.showProfile = !this.showProfile;
+  }
+
+  showDeleteMenu = false;
+  toggleDelete = () => {
+    this.showDeleteMenu = !this.showDeleteMenu;
+  }
+  
   deleteFortune(fortuneId: String){
     this.deleteThisFortune.user.id = this.loggedInUserProf.id;
     console.log(fortuneId);

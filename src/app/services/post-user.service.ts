@@ -8,6 +8,7 @@ import { loggedInUser } from '../loggedInUser';
 })
 export class PostUserService {
   postUrl: string = "http://34.207.123.39:8085/ProjectFortuneX/apiusers";
+  editUrl: string = "http://34.207.123.39:8085/ProjectFortuneX/update";
 
   constructor(private http: HttpClient) { }
 
@@ -22,4 +23,7 @@ export class PostUserService {
     return this.http.post<loggedInUser>(this.postUrl, user, this.httpOptions);
   }
 
+  editUser (editThisUser : loggedInUser) {
+    return this.http.post<loggedInUser>(this.editUrl, editThisUser, this.httpOptions);
+  }
 }
