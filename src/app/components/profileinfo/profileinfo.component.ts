@@ -29,8 +29,14 @@ export class ProfileinfoComponent implements OnInit {
     password: ""
   };
 
+  profMessage: string = "";
+
+  completeUpdate(){
+    window.location.href="http://localhost:4200/profile";
+  }
+
   // All the logic for checking empty strings in profile edit & populating editedUser object with create values if so.
-  editUser(fname: string, lname: string, email: string, pass: string){
+  editUser(fname: string, lname: string, email: string, pass: string, pass2: string){
     this.editedUser.id = this.userId;
     console.log(this.userPass + " this should be our password");
 
@@ -55,8 +61,16 @@ export class ProfileinfoComponent implements OnInit {
     if (pass == "" || pass == null){
       this.editedUser.password = this.userPass; 
     } else {
-      //add password validation here!!!!
-      this.editedUser.password = pass;
+      if(!(pass === pass2)){
+        this.profMessage = "The passwords you input did not match. Please try again.";
+      } else {
+        this.editedUser.password = pass;
+        
+        this.postUserServ.editUser(this.editedUser).subscribe((editResp) => {
+          this.profMessage = "Passwords matched. Redirecting you to profile home now...";
+          setTimeout(this.completeUpdate, 4000);
+        });
+      }
     }
 
     console.log(this.editedUser);
@@ -67,8 +81,5 @@ export class ProfileinfoComponent implements OnInit {
     window.localStorage.setItem("lName", JSON.stringify(this.editedUser.lName));
     window.localStorage.setItem("email", JSON.stringify(this.editedUser.email));
     window.localStorage.setItem("password", JSON.stringify(this.editedUser.password));
-
-    this.postUserServ.editUser(this.editedUser).subscribe((editResp) => {
-    });
   }
 }

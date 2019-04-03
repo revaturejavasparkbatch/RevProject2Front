@@ -19,8 +19,9 @@
         </div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-warning" (click)="editUser(userfname.value, userlname.value, useremail.value, userpass.value)">
+      <button class="btn btn-warning" (click)="editUser(userfname.value, userlname.value, useremail.value, userpass.value, userpass2.value)">
         Update Profile
       </button>
     </div>
+    <strong style="color: red">{{profMessage}}</strong>
   </form>
