@@ -15,6 +15,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserCarryService } from './services/user-carry.service';
+import { ProfileinfoComponent } from './components/profileinfo/profileinfo.component';
+import { DeletemodalComponent } from './components/deletemodal/deletemodal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { UserCarryService } from './services/user-carry.service';
     ModalviewComponent,
     FortuneOfTheDayComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileinfoComponent,
+    DeletemodalComponent
   ],
   imports: [
     BrowserModule,
