@@ -37,12 +37,13 @@ export class LoginViewComponent implements OnInit {
   this.loginServ.loginUser(userLogin).subscribe((response) => {
       this.loggedInUser = response;
       console.log(loggedInUser);
-      window.localStorage.setItem("id", JSON.stringify(this.loggedInUser.id));
-      window.localStorage.setItem("fName", JSON.stringify(this.loggedInUser.fName));
-      window.localStorage.setItem("lName", JSON.stringify(this.loggedInUser.lName));
-      window.localStorage.setItem("email", JSON.stringify(this.loggedInUser.email));
-
+      
+    
       if (response.email != null) {
+          window.localStorage.setItem("id", JSON.stringify(this.loggedInUser.id));
+          window.localStorage.setItem("fName", JSON.stringify(this.loggedInUser.fName));
+          window.localStorage.setItem("lName", JSON.stringify(this.loggedInUser.lName));
+          window.localStorage.setItem("email", JSON.stringify(this.loggedInUser.email));
           this.route.navigateByUrl("/dashboard");
         }
     });
