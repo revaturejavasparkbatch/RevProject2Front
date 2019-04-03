@@ -22,12 +22,12 @@
     </div>
     <div class="modal-footer">
       <div *ngIf="createRespMsg === successMsg">
-        <p style="color:lightgreen">{{createRespMsg}}</p>
+        <p style="color:green">{{createRespMsg}}</p>
       </div>
       <div *ngIf="createRespMsg === errorMsg">
           <p style="color:red">{{createRespMsg}}</p>
         </div>
-      <button class="btn btn-success" (click)="add(first.value, last.value, email.value, pass.value);">
+      <button style="width: 35%" class="btn btn-success" (click)="add(first.value, last.value, email.value, pass.value);">
         Submit Form
       </button>
     </div>

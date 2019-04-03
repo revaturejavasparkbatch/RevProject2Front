@@ -25,7 +25,8 @@ export class DashboardComponent implements OnInit {
   showFavButton = false;
 
   ngOnInit(): void {
-    
+    console.log(JSON.parse(window.localStorage.getItem("fName")));
+
     this.loggedInUser = this.userCarryService.getcurrentUser();
     console.log(this.loggedInUser);
     

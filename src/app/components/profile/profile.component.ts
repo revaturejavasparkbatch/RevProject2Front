@@ -39,6 +39,7 @@ export class ProfileComponent implements OnInit {
 
   userIdNum: number;
   storageUser: loggedInUser;
+  hide: boolean = true;
 
   private fortuneUrl = "http://fortunecookieapi.herokuapp.com/v1/fortunes/";
 
@@ -72,14 +73,25 @@ export class ProfileComponent implements OnInit {
     this.showDeleteMenu = !this.showDeleteMenu;
   }
   
-  deleteFortune(fortuneId: String){
+  deleteFortune(fortuneId: string){
     this.deleteThisFortune.user.id = this.loggedInUserProf.id;
     console.log(fortuneId);
+    //document.getElementById(fortuneId).setAttribute("hidden","true");
+    //document.getElementById(fortuneId).remove();
+    for(let i = 0; i<this.fortune.length; i++){
+      if(this.fortune[i].id == fortuneId){
+        this.fortune.splice(i,1);
+      }
+    }
+
+    console.log(this.fortune);
     this.deleteThisFortune.id = fortuneId;
 
+
     this.deleteFortuneService.deleteFortune(this.deleteThisFortune).subscribe((deletedFort) => {
-      console.log(deletedFort + "was deleted!!! POG");
-      this.route.navigateByUrl("/profile");
+      console.log(deletedFort);
+      // location.reload();
+
     })
   }
 
