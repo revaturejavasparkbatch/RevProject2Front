@@ -25,10 +25,9 @@ export class DashboardComponent implements OnInit {
   showFavButton = false;
 
   ngOnInit(): void {
-    this.userCarryService.getcurrentUser().subscribe((ourUser) => {
-      this.loggedInUser = ourUser;
-      console.log(this.loggedInUser);
-    });
+    
+    this.loggedInUser = this.userCarryService.getcurrentUser();
+    console.log(this.loggedInUser);
     
     this.getUserFortuneService.getFortunes(parseInt(window.localStorage.getItem("id"))).subscribe((userFortunes) => {
       this.fortuneNums = userFortunes;
