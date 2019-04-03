@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
   fortuneMess: String[] = [];
   loggedInUserProf: loggedInUser;
   fortuneNum: String[] = [];
-  userFirstName: String = "";
+  userFirstName: String = JSON.parse(window.localStorage.getItem("fName"));
   deleteThisFortune: completeFortune =  {
       id: "",
         user: {
@@ -51,7 +51,6 @@ export class ProfileComponent implements OnInit {
 
     this.getUserFortuneService.getFortunes(parseInt(window.localStorage.getItem("id"))).subscribe((userObjects) => {
       console.log(userObjects);
-      this.userFirstName = userObjects[0].user.fName;
         for(let fort of userObjects){
           this.fortuneNum.push(fort.id);
           this.getUserFortuneService.getUserFortunes(this.fortuneUrl+fort.id).subscribe((ourFortunes) => {

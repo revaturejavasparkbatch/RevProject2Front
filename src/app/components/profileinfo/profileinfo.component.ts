@@ -31,6 +31,10 @@ export class ProfileinfoComponent implements OnInit {
 
   profMessage: string = "";
 
+  completeUpdate(){
+    window.location.href="http://localhost:4200/profile";
+  }
+
   // All the logic for checking empty strings in profile edit & populating editedUser object with create values if so.
   editUser(fname: string, lname: string, email: string, pass: string, pass2: string){
     this.editedUser.id = this.userId;
@@ -61,7 +65,11 @@ export class ProfileinfoComponent implements OnInit {
         this.profMessage = "The passwords you input did not match. Please try again.";
       } else {
         this.editedUser.password = pass;
-        this.profMessage = "Passwords matched. Updating profile now...";
+        
+        this.postUserServ.editUser(this.editedUser).subscribe((editResp) => {
+          this.profMessage = "Passwords matched. Redirecting you to profile home now...";
+          setTimeout(this.completeUpdate, 4000);
+        });
       }
     }
 
@@ -73,8 +81,5 @@ export class ProfileinfoComponent implements OnInit {
     window.localStorage.setItem("lName", JSON.stringify(this.editedUser.lName));
     window.localStorage.setItem("email", JSON.stringify(this.editedUser.email));
     window.localStorage.setItem("password", JSON.stringify(this.editedUser.password));
-
-    this.postUserServ.editUser(this.editedUser).subscribe((editResp) => {
-    });
   }
 }

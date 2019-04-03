@@ -35,6 +35,7 @@ export class CreateAccountComponent implements OnInit {
         window.localStorage.setItem("fName", JSON.stringify(response.fName));
         window.localStorage.setItem("lName", JSON.stringify(response.lName));
         window.localStorage.setItem("email", JSON.stringify(response.email));
+        window.localStorage.setItem("password", JSON.stringify(response.password));
         this.route.navigateByUrl("/dashboard");
       }
     });
