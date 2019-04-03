@@ -36,13 +36,14 @@ export class LoginViewComponent implements OnInit {
 
   this.loginServ.loginUser(userLogin).subscribe((response) => {
       this.loggedInUser = response;
-      console.log(response.email);
+      console.log(response);
 
       if (response.email != null) {
         window.localStorage.setItem("id", JSON.stringify(response.id));
         window.localStorage.setItem("fName", JSON.stringify(response.fName));
         window.localStorage.setItem("lName", JSON.stringify(response.lName));
         window.localStorage.setItem("email", JSON.stringify(response.email));
+        window.localStorage.setItem("password", JSON.stringify(response.password));
           this.route.navigateByUrl("/dashboard");
         }
     });

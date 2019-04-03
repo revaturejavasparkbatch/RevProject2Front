@@ -15,11 +15,11 @@
           <label for="userpass">Password</label>
           <input type="password" class="form-control" name="userpass" #userpass placeholder="No new password? Enter your old one." required/>
           <label for="userpass2">Confirm Password</label>
-          <input type="password" class="form-control" name="userpass2" #userpass placeholder="Confirm password." required/>
+          <input type="password" class="form-control" name="userpass2" #userpass2 placeholder="Confirm password." required/>
         </div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-warning">
+      <button class="btn btn-warning" (click)="editUser(userfname.value, userlname.value, useremail.value, userpass.value)">
         Update Profile
       </button>
     </div>
