@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostUserService } from '../../services/post-user.service';
-import {User} from '../../User';
-
+import { Router } from '@angular/router';
+import { loggedInUser } from 'src/app/loggedInUser';
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
@@ -10,17 +10,17 @@ import {User} from '../../User';
 export class CreateAccountComponent implements OnInit {
   
   activeModal: boolean = false;
-  user: { firstName: string; lastName: string; email: string; password: string};
   
-  constructor(private postUserService: PostUserService) { }
+  
+  constructor(private postUserService: PostUserService, private route: Router) { }
 
   ngOnInit() {
   }
 
-  users: User[];
-
+  private errorMessage = "";
   add(fN: string, lN: string, em: string, pass: string): void {
-    let user = {
+    let user:loggedInUser = {
+      id: null,
       fName: fN,
       lName: lN,
       email: em,
@@ -30,7 +30,13 @@ export class CreateAccountComponent implements OnInit {
     console.log(user);
 
     this.postUserService.addUser(user).subscribe((response) => {
-      console.log('response from post is ', response);
+      if (response.email != null) {
+        window.localStorage.setItem("id", JSON.stringify(response.id));
+        window.localStorage.setItem("fName", JSON.stringify(response.fName));
+        window.localStorage.setItem("lName", JSON.stringify(response.lName));
+        window.localStorage.setItem("email", JSON.stringify(response.email));
+        this.route.navigateByUrl("/dashboard");
+      }
     });
 
   } 

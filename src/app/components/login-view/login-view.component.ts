@@ -36,6 +36,7 @@ export class LoginViewComponent implements OnInit {
 
   this.loginServ.loginUser(userLogin).subscribe((response) => {
       this.loggedInUser = response;
+
       console.log(response);
 
       if (response.email != null) {
@@ -44,7 +45,7 @@ export class LoginViewComponent implements OnInit {
         window.localStorage.setItem("lName", JSON.stringify(response.lName));
         window.localStorage.setItem("email", JSON.stringify(response.email));
         window.localStorage.setItem("password", JSON.stringify(response.password));
-          this.route.navigateByUrl("/dashboard");
+        this.route.navigateByUrl("/dashboard");
         }
     });
 

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {User} from '../User';
 import { loggedInUser } from '../loggedInUser';
 
 @Injectable({
@@ -19,9 +18,9 @@ export class PostUserService {
     })
   }
 
-  addUser (user: User) {
+  addUser (user: loggedInUser) {
     console.log("we are in addUser");
-    return this.http.post<User>(this.postUrl, user, this.httpOptions);
+    return this.http.post<loggedInUser>(this.postUrl, user, this.httpOptions);
   }
 
   editUser (editThisUser : loggedInUser) {

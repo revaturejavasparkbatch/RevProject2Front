@@ -5,7 +5,8 @@ import { UserCarryService } from 'src/app/services/user-carry.service';
 import { loggedInUser } from 'src/app/loggedInUser';
 import { GetUserFortunesService } from '../../services/get-user-fortunes.service';
 import {FavFortuneService} from 'src/app/services/fav-fortune.service';
-
+import { LogoutService } from 'src/app/services/logout.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,8 +14,9 @@ import {FavFortuneService} from 'src/app/services/fav-fortune.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private userCarryService: UserCarryService, private RandFortuneService: RandFortuneService,
-     private getUserFortuneService: GetUserFortunesService, private favFortuneService: FavFortuneService ) {}
+  constructor(private route: Router, private userCarryService: UserCarryService, private RandFortuneService: RandFortuneService,
+     private getUserFortuneService: GetUserFortunesService, private favFortuneService: FavFortuneService,
+     private logoutService:LogoutService ) {}
   loggedInUser: loggedInUser;
   private luckNum = null;
   randFortune = "";
@@ -51,6 +53,12 @@ export class DashboardComponent implements OnInit {
     this.randFortuneId ="";
     this.showFavButton = false;
     this.luckNum= null;
+  }
+  loggingout(){
+    this.logoutService.logout();
+  }
+  goPro(){
+    this.route.navigateByUrl('/profile');
   }
 
 }

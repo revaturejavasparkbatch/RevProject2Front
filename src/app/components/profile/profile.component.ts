@@ -8,7 +8,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { completeFortune } from 'src/app/completeFortune';
 import { DeleteFortuneService } from 'src/app/services/delete-fortune.service';
 import { getMatFormFieldPlaceholderConflictError } from '@angular/material';
- 
+import { LogoutService } from 'src/app/services/logout.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -16,7 +16,9 @@ import { getMatFormFieldPlaceholderConflictError } from '@angular/material';
 })
 
 export class ProfileComponent implements OnInit {
-  constructor(private route: Router, private getUserFortuneService: GetUserFortunesService, private userCarryService: UserCarryService, private deleteFortuneService: DeleteFortuneService) { }
+  constructor(private route: Router, private getUserFortuneService: GetUserFortunesService, 
+    private userCarryService: UserCarryService, private deleteFortuneService: DeleteFortuneService,
+    private logoutService:LogoutService ) { }
 
   fortune: Fortune[] = [];
   fortuneMess: String[] = [];
@@ -88,6 +90,6 @@ export class ProfileComponent implements OnInit {
   }
 
   logout(){
-    this.route.navigateByUrl("/");
+    this.logoutService.logout();
   }
 }
