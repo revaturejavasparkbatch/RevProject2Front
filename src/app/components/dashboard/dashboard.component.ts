@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
      private getUserFortuneService: GetUserFortunesService, private favFortuneService: FavFortuneService,
      private logoutService:LogoutService ) {}
   loggedInUser: loggedInUser;
-  private luckNum = null;
+  private luckNum:number = null;
   randFortune = "";
   private randFortuneId = "" ;
   private fortuneNums = null;

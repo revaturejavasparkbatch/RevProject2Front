@@ -65,12 +65,10 @@
             <i style="   color: red !important;
             cursor: pointer !important;
             animation: pulseTheHeart 1s ease infinite !important;" id="heart" class="tim-icons icon-heart-2" (click)="favFortune()"></i>
-        </span></h3></span>
+        </span></h3><h4 *ngIf='showFavButton'>Lucky Number: {{luckNum}}</h4></span>
       </h1>
      
-      <div class="btn-wrapper mb-3">
-        <a href="#blk" class="btn btn-success btn-link btn-sm"></a>
-      </div>
+     
       <div *ngIf='showFavButton'>
       <div class="btn-wrapper">
         <div class="button-container">
