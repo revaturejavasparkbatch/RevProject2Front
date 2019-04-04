@@ -23,7 +23,10 @@ export class DeletemodalComponent implements OnInit {
     password: ""
   }
 
-  errorMessage: string = "";
+  delModalMessage: string = "";
+  deleted = "Account deleted... redirecting you now.";
+  errorMsg = "Your passwords did not match. Please try again.";
+  wrongPW = "You input the incorrect password associate with the account.";
 
   completeDel(){
     console.log("are we even in completeDel() ??? ");
@@ -35,16 +38,16 @@ export class DeletemodalComponent implements OnInit {
     console.log(this.deleteThisUser.email);
 
     if (!(password === pass2)){
-      this.errorMessage = "Your passwords did not match. Please try again.";
+      this.delModalMessage = this.errorMsg;
     } else {
       if (password === pass2  && password === JSON.parse(window.localStorage.getItem("password"))) {
         this.delService.deleteUser(this.deleteThisUser).subscribe((deleted) => {
           console.log("user was deleted");
-          this.errorMessage = "Account deleted... redirecting you now.";
+          this.delModalMessage = this.deleted;
           setTimeout(() => this.router.navigateByUrl("/"), 3000);
       });
     } else {
-        this.errorMessage = "You input the incorrect password associate with the account."
+        this.delModalMessage = this.wrongPW;
       }
     }
   }
