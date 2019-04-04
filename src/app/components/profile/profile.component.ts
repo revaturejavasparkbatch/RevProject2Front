@@ -9,7 +9,6 @@ import { completeFortune } from 'src/app/completeFortune';
 import { DeleteFortuneService } from 'src/app/services/delete-fortune.service';
 import { getMatFormFieldPlaceholderConflictError } from '@angular/material';
 import { LogoutService } from 'src/app/services/logout.service';
-import { ShownFortune } from '../../shownFortune';
 
 @Component({
   selector: 'app-profile',
