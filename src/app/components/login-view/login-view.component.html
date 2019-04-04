@@ -4,14 +4,18 @@
   </button>
 </div>
 <form>
-  <div class="modal-boy">
+  <div class="modal-boy"> <br>
     <div class="container" style="color:black !important">
+      <div class="form-group">
         <label for="elemail">Email</label>
         <input type="text" class="form-control" name="elemail" #elemail required/>
+      </div>
+      <div class="form-group">
         <label for="elpassword">Password</label>
         <input type="password" class="form-control" name="elpassword" #elpassword required/>
       </div>
-  </div>
+      </div>
+  </div> <br>
   <div class="modal-footer">
       <div *ngIf="message === sucMsg">
           <p style="color:green">{{message}}</p>

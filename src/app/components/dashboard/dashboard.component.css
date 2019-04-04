@@ -1,8 +1,15 @@
-#heart:hover{
-    color: rgb(209, 105, 102) !important;
-    cursor: pointer !important;
-    animation: pulseTheHeart 1s ease infinite !important;
+#profIcon, #powerIcon {
+    margin-left: 7px;
+    height: 18px;
+    width: 18px;
+    position: relative;
 }
+
+button {
+    margin: auto;
+    text-align: center;
+}
+
 #heart{
     transform: scale(1.5) !important;
     margin-left: 15px !important;
@@ -45,4 +52,5 @@
 }
 #tweet * {
     all:unset !important;
+
 }

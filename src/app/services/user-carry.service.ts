@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class UserCarryService {
   constructor(private http: HttpClient) { }
   
-  private user:loggedInUser ={
+  public user: loggedInUser = {
     id: JSON.parse(window.localStorage.getItem("id")),
     email: JSON.parse(window.localStorage.getItem("email")),
     fName: JSON.parse(window.localStorage.getItem("fName")),

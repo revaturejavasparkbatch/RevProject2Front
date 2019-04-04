@@ -1,23 +1,33 @@
 <div class="modal-header">
-    <h4 class="modal-title" style="color: black">Profile Information</h4>
+    <h4 class="modal-title" style="color: black">Profile Information <i id="profIcon" class="tim-icons icon-single-02"></i></h4>
     <button type="button" class="close" aria-label="Close">
     </button>
   </div>
   <form>
     <div class="modal-boy">
-      <div class="container" style="color:black !important">
+      <div class="container" style="color:black !important"> <br>
+        <div class="form-group">
           <label for="userfname">First Name</label>
           <input type="text" class="form-control" name="userfname" #userfname placeholder={{firstName}} required/>
+        </div>
+        <div class="form-group">
           <label for="userfname">Last Name</label>
           <input type="text" class="form-control" name="userlname" #userlname placeholder={{lastName}} required/>
+        </div>
+        <div class="form-group">
           <label for="useremail">Email</label>
           <input type="email" class="form-control" name="useremail" #useremail placeholder={{userEmail}} required/>
+      </div>
+      <div class="form-group">
           <label for="userpass">Password</label>
           <input type="password" class="form-control" name="userpass" #userpass placeholder="No new password? Enter your old one." required/>
+      </div>
+       <div class="form-group">
           <label for="userpass2">Confirm Password</label>
           <input type="password" class="form-control" name="userpass2" #userpass2 placeholder="Confirm password." required/>
         </div>
-    </div>
+        </div>
+    </div> <br>
     <div class="modal-footer">
       <button class="btn btn-warning" (click)="editUser(userfname.value, userlname.value, useremail.value, userpass.value, userpass2.value)">
         Update Profile
