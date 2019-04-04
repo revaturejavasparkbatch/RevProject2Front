@@ -10,16 +10,16 @@ import { loggedInUser } from 'src/app/loggedInUser';
 export class CreateAccountComponent implements OnInit {
   
   activeModal: boolean = false;
-  private errorMsg = "Account creation failed, verify that all information is correct!"
-  private successMsg = "Account successfully created! Redirecting..."
-  private createRespMsg = "";
+  public errorMsg = "Account creation failed, verify that all information is correct!"
+  public successMsg = "Account successfully created! Redirecting..."
+  public createRespMsg = "";
   private userloggedin : loggedInUser;
   constructor(private postUserService: PostUserService, private route: Router) { }
 
   ngOnInit() {
   }
 
-  private errorMessage = "";
+  public errorMessage = "";
   add(fN: string, lN: string, em: string, pass: string): void {
     let user:loggedInUser = {
       id: null,
@@ -42,6 +42,7 @@ export class CreateAccountComponent implements OnInit {
         window.localStorage.setItem("password", JSON.stringify(response.password));
         this.createRespMsg = this.successMsg;
         setTimeout(()=> window.location.href = "http://localhost:4200/dashboard", 3500);
+        // setTimeout(() => this.route.navigateByUrl("/dashboard"), 3500);
       }
     }, (error) => {
       this.createRespMsg = this.errorMsg;

@@ -9,6 +9,8 @@ import { completeFortune } from 'src/app/completeFortune';
 import { DeleteFortuneService } from 'src/app/services/delete-fortune.service';
 import { getMatFormFieldPlaceholderConflictError } from '@angular/material';
 import { LogoutService } from 'src/app/services/logout.service';
+import { ShownFortune } from '../../shownFortune';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -24,7 +26,13 @@ export class ProfileComponent implements OnInit {
   fortuneMess: String[] = [];
   loggedInUserProf: loggedInUser;
   fortuneNum: String[] = [];
+
+  luckynumstr = "";
   userFirstName: String = JSON.parse(window.localStorage.getItem("fName"));
+
+  tweet: string = "tweetomgplease";
+  completeF: completeFortune[] = [];
+
   deleteThisFortune: completeFortune =  {
       id: "",
         user: {
@@ -32,7 +40,7 @@ export class ProfileComponent implements OnInit {
         email: "",
         fName: "",
         lName: "",
-        password: "",
+        password: ""
       },
     luckyNum: 0
     };
@@ -40,6 +48,7 @@ export class ProfileComponent implements OnInit {
   userIdNum: number;
   storageUser: loggedInUser;
   hide: boolean = true;
+  splitArr: string[] = [];
 
   private fortuneUrl = "http://fortunecookieapi.herokuapp.com/v1/fortunes/";
 
@@ -52,13 +61,16 @@ export class ProfileComponent implements OnInit {
 
     this.getUserFortuneService.getFortunes(parseInt(window.localStorage.getItem("id"))).subscribe((userObjects) => {
       console.log(userObjects);
+      this.completeF = userObjects;
+      console.log(this.completeF);
         for(let fort of userObjects){
+          this.luckynumstr+= (String)(fort.luckyNum) + " ";
           this.fortuneNum.push(fort.id);
           this.getUserFortuneService.getUserFortunes(this.fortuneUrl+fort.id).subscribe((ourFortunes) => {
             this.fortune.push(ourFortunes);
-            console.log(this.fortune);
           });
         }
+
       });
 
   }
@@ -82,6 +94,7 @@ export class ProfileComponent implements OnInit {
       if(this.fortune[i].id == fortuneId){
         this.fortune.splice(i,1);
       }
+    
     }
 
     console.log(this.fortune);
