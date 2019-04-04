@@ -1,0 +1,48 @@
+#heart:hover{
+    color: rgb(209, 105, 102) !important;
+    cursor: pointer !important;
+    animation: pulseTheHeart 1s ease infinite !important;
+}
+#heart{
+    transform: scale(1.5) !important;
+    margin-left: 15px !important;
+}
+@keyframes pulseTheHeart {
+    0% { transform: scale(1.5); }
+    50% { transform: scale(1.8); }
+    100% { transform: scale(1.5); }
+  }
+.fortune-btn{
+    -moz-animation:cycle 5s infinite; /* Firefox */
+    -webkit-animation:cycle 14s infinite; /* Safari and Chrome */
+}
+
+@-moz-keyframes cycle /* Firefox */ {
+    0% {background: red;}
+    12.5% {background: indigo;}
+    25% {background: #c71585}
+    37.5% {background: blueviolet;}
+    50% {background: blue;}
+    62.5% {background: blueviolet;}
+    75% {background: #c71585 ;}
+    87.5% {background: indigo;}
+    100% {background: red;}
+}
+
+@-webkit-keyframes cycle /* Safari and Chrome */ {
+    0% {background: red;}
+    12.5% {background: indigo;}
+    25% {background: #c71585}
+    37.5% {background: blueviolet;}
+    50% {background: blue;}
+    62.5% {background: blueviolet;}
+    75% {background: #c71585 ;}
+    87.5% {background: indigo;}
+    100% {background: red;}
+}
+#tweet{
+    all:initial !important;
+}
+#tweet * {
+    all:unset !important;
+}
