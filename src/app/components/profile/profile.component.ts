@@ -66,6 +66,7 @@ export class ProfileComponent implements OnInit {
           this.luckynumstr+= (String)(fort.luckyNum) + " ";
           this.fortuneNum.push(fort.id);
           this.getUserFortuneService.getUserFortunes(this.fortuneUrl+fort.id).subscribe((ourFortunes) => {
+            ourFortunes.luckyNum = fort.luckyNum;
             this.fortune.push(ourFortunes);
           });
         }

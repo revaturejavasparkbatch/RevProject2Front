@@ -27,24 +27,27 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     console.log(JSON.parse(window.localStorage.getItem("fName")));
 
-    this.loggedInUser = this.userCarryService.getcurrentUser();
-    console.log(this.loggedInUser);
+   
     
-    this.getUserFortuneService.getFortunes(parseInt(window.localStorage.getItem("id"))).subscribe((userFortunes) => {
-      this.fortuneNums = userFortunes;
-    });
+  
   }
   
   generateFortune(){
+    this.loggedInUser = this.userCarryService.getcurrentUser();
+    console.log(this.loggedInUser);
+    this.getUserFortuneService.getFortunes(parseInt(window.localStorage.getItem("id"))).subscribe((userFortunes) => {
+      this.fortuneNums = userFortunes;
+    });
     this.RandFortuneService.getRandFortune(this.fortuneNums).subscribe((randomFortune) =>{
       this.randFortune = randomFortune[0].message;
       this.randFortuneId = randomFortune[0].id;
 
     });
     this.showFavButton = true;
-    this.luckNum = Math.floor((1 + (Math.random()*998)));
+    this.luckNum = Math.floor((1 + (Math.random()*498)));
   }
   favFortune(){
+    
     let fortune:completeFortune = {id:this.randFortuneId, user:this.loggedInUser, luckyNum:this.luckNum};
     this.favFortuneService.favAFortune(fortune).subscribe((putResponse) =>{
       console.log(putResponse);

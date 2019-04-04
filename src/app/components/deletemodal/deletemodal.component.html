@@ -17,9 +17,17 @@
         </div>
     </div> <br>
     <div class="modal-footer">
+      <div *ngIf="delModalMessage === deleted">
+          <p style="color:green">{{delModalMessage}}</p>
+      </div>
+      <div *ngIf="delModalMessage === errorMsg">
+          <p style="color:red">{{delModalMessage}}</p>
+      </div>
+      <div *ngIf="delModalMessage === wrongPW">
+          <p style="color:red">{{delModalMessage}}</p>
+      </div>
       <button class="btn btn-danger" (click)="deleteUser(deletePW.value, deletePW2.value)">
         Delete
       </button>
     </div>
-    <p style="color: red">{{errorMessage}}</p>
   </form>

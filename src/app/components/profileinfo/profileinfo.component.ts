@@ -30,6 +30,8 @@ export class ProfileinfoComponent implements OnInit {
   };
 
   profMessage: string = "";
+  sucMessage = "Passwords matched. Redirecting you to profile home now...";
+  errMessage = "The passwords you input did not match. Please try again.";
 
   completeUpdate(){
     window.location.href="http://localhost:4200/profile";
@@ -62,12 +64,12 @@ export class ProfileinfoComponent implements OnInit {
       this.editedUser.password = this.userPass; 
     } else {
       if(!(pass === pass2)){
-        this.profMessage = "The passwords you input did not match. Please try again.";
+        this.profMessage = this.errMessage;
       } else {
         this.editedUser.password = pass;
         
         this.postUserServ.editUser(this.editedUser).subscribe((editResp) => {
-          this.profMessage = "Passwords matched. Redirecting you to profile home now...";
+          this.profMessage = this.sucMessage;
           setTimeout(this.completeUpdate, 4000);
         });
       }

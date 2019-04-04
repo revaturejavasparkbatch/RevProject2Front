@@ -29,9 +29,14 @@
         </div>
     </div> <br>
     <div class="modal-footer">
-      <button class="btn btn-warning" (click)="editUser(userfname.value, userlname.value, useremail.value, userpass.value, userpass2.value)">
+      <div *ngIf="profMessage === sucMessage">
+          <p style="color:green">{{profMessage}}</p>
+      </div>
+      <div *ngIf="profMessage === errMessage">
+          <p style="color:red">{{profMessage}}</p>
+      </div>
+      <button class="btn btn-warning" style="width: 35%" (click)="editUser(userfname.value, userlname.value, useremail.value, userpass.value, userpass2.value)">
         Update Profile
       </button>
     </div>
-    <strong style="color: red">{{profMessage}}</strong>
   </form>

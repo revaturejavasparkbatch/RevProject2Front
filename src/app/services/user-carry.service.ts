@@ -9,17 +9,17 @@ import { Observable } from 'rxjs';
 
 export class UserCarryService {
   constructor(private http: HttpClient) { }
-  
-  public user: loggedInUser = {
-    id: JSON.parse(window.localStorage.getItem("id")),
-    email: JSON.parse(window.localStorage.getItem("email")),
-    fName: JSON.parse(window.localStorage.getItem("fName")),
-    lName: JSON.parse(window.localStorage.getItem("lName")),
-    password: JSON.parse(window.localStorage.getItem("password"))
-  };
 
   getcurrentUser(): loggedInUser {
-    return this.user;
+    let user: loggedInUser = {
+      id: JSON.parse(window.localStorage.getItem("id")),
+      email: JSON.parse(window.localStorage.getItem("email")),
+      fName: JSON.parse(window.localStorage.getItem("fName")),
+      lName: JSON.parse(window.localStorage.getItem("lName")),
+      password: JSON.parse(window.localStorage.getItem("password"))
+    };
+    
+    return user;
   }
 
 }
