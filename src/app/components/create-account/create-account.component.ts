@@ -41,12 +41,12 @@ export class CreateAccountComponent implements OnInit {
         window.localStorage.setItem("email", JSON.stringify(response.email));
         window.localStorage.setItem("password", JSON.stringify(response.password));
         this.createRespMsg = this.successMsg;
-        setTimeout(()=> window.location.href = "http://localhost:4200/dashboard", 3500);
-        // setTimeout(() => this.route.navigateByUrl("/dashboard"), 3500);
+        setTimeout(()=> window.location.href="http://localhost:4200/dashboard", 3500);
       }
-    }, (error) => {
+    },(error) => {
       this.createRespMsg = this.errorMsg;
       console.log(error);
+    
     });
 
   } 
