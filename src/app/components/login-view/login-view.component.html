@@ -13,6 +13,12 @@
       </div>
   </div>
   <div class="modal-footer">
+      <div *ngIf="message === sucMsg">
+          <p style="color:green">{{message}}</p>
+        </div>
+        <div *ngIf="message === errMsg">
+            <p style="color:red">{{message}}</p>
+          </div>
     <button class="btn btn-success" (click) ="addLoginInfo(elemail.value, elpassword.value);">
       Login
     </button>

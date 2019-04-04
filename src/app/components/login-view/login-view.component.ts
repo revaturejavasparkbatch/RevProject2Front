@@ -25,7 +25,9 @@ export class LoginViewComponent implements OnInit {
 
   userLogin: {email: string; password: string};
   loggedInUser: loggedInUser;
-
+  message = "";
+  errMsg = "Login credentials invalid! Try agian!"
+  sucMsg = "Login success! Redirecting...";
   myStorage = window.localStorage;
 
   addLoginInfo(em: string, pass: string): void {
@@ -45,9 +47,14 @@ export class LoginViewComponent implements OnInit {
         window.localStorage.setItem("lName", JSON.stringify(response.lName));
         window.localStorage.setItem("email", JSON.stringify(response.email));
         window.localStorage.setItem("password", JSON.stringify(response.password));
+        this.message = this.sucMsg;
         setTimeout(()=> this.route.navigateByUrl("/dashboard"), 2500);
         }
-    });
+      },(error) => {
+        this.message = this.errMsg;
+        console.log(error);
+      
+      });;
 
   }
 }
