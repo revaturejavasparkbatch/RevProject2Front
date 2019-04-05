@@ -34,7 +34,8 @@ export class ProfileinfoComponent implements OnInit {
   errMessage = "The passwords you input did not match. Please try again.";
 
   completeUpdate(){
-    window.location.href="http://localhost:4200/profile";
+    // window.location.href="http://project-fortune-x.s3-website.us-east-2.amazonaws.com/profile";
+    location.reload();
   }
 
   // All the logic for checking empty strings in profile edit & populating editedUser object with create values if so.
