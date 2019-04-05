@@ -33,11 +33,6 @@ export class ProfileinfoComponent implements OnInit {
   sucMessage = "Passwords matched. Redirecting you to profile home now...";
   errMessage = "The passwords you input did not match. Please try again.";
 
-  completeUpdate(){
-    // window.location.href="http://project-fortune-x.s3-website.us-east-2.amazonaws.com/profile";
-    location.reload();
-  }
-
   // All the logic for checking empty strings in profile edit & populating editedUser object with create values if so.
   editUser(fname: string, lname: string, email: string, pass: string, pass2: string){
     this.editedUser.id = this.userId;
@@ -71,7 +66,7 @@ export class ProfileinfoComponent implements OnInit {
         
         this.postUserServ.editUser(this.editedUser).subscribe((editResp) => {
           this.profMessage = this.sucMessage;
-          setTimeout(this.completeUpdate, 4000);
+          setTimeout(() => this.route.navigateByUrl("/dashboard"), 4000);
         });
       }
     }
